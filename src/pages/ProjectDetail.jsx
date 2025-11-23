@@ -91,14 +91,6 @@ export default function ProjectDetail() {
               </Box>
             </Box>
 
-            {/* Role & Responsibilities */}
-            <Box sx={{ mb: 4 }}>
-              <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
-                My Role & Responsibilities
-              </Typography>
-              <Typography variant="body1">{project.role}</Typography>
-            </Box>
-
             {/* Process */}
             <Box sx={{ mb: 4 }}>
               <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>

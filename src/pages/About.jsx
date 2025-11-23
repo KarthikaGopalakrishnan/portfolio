@@ -2,6 +2,32 @@ import React from 'react';
 import { Container, Typography, Box, Grid, Card, CardContent } from '@mui/material';
 
 export default function About() {
+  // Calculate years of experience from July 2018
+  const calculateExperience = () => {
+    const startDate = new Date(2018, 6, 1); // July 2018 (month is 0-indexed)
+    const currentDate = new Date();
+    let years = currentDate.getFullYear() - startDate.getFullYear();
+    const monthDifference = currentDate.getMonth() - startDate.getMonth();
+    
+    if (monthDifference < 0) {
+      years--;
+    }
+    
+    const dayDifference = currentDate.getDate() - startDate.getDate();
+    const months = monthDifference < 0 ? 12 + monthDifference : monthDifference;
+    const days = dayDifference < 0 ? months > 0 ? 30 : 0 : dayDifference;
+    
+    if (years > 0) {
+      return `${years}+ years`;
+    } else if (months > 0) {
+      return `${months}+ months`;
+    } else {
+      return 'Less than a month';
+    }
+  };
+
+  const yearsOfExperience = calculateExperience();
+
   return (
     <Box sx={{ py: 8 }}>
       <Container maxWidth="lg">
@@ -11,7 +37,7 @@ export default function About() {
               About Me
             </Typography>
             <Typography variant="body1" sx={{ mb: 2 }}>
-              I'm a Senior Software Engineer with 7.5+ years of experience designing and building user-centric, scalable interfaces. I combine deep technical expertise with a passion for exceptional user experiences, driven by research and design thinking.
+              I'm a Senior Software Engineer with {yearsOfExperience} of experience designing and building user-centric, scalable interfaces. I combine deep technical expertise with a passion for exceptional user experiences, driven by research and design thinking.
             </Typography>
             <Typography variant="body1" sx={{ mb: 2 }}>
               At my core, I'm fascinated by how technology can solve real human problems. I've led full-stack projects at scale, mentored junior engineers, and actively explored emerging areas like HCI research and AI-assisted design.
@@ -29,18 +55,12 @@ export default function About() {
                 </Typography>
                 <Box sx={{ mb: 2 }}>
                   <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                    MS in Computer Science
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Specialization in Human-Computer Interaction & UX Research
+                    MS in Computer Science — Texas A&M Kingsville
                   </Typography>
                 </Box>
                 <Box>
                   <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                    B.Tech in Information Technology
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Strong foundation in software engineering and systems design
+                    B.Tech in Information Technology — Anna University
                   </Typography>
                 </Box>
               </CardContent>
@@ -68,19 +88,15 @@ export default function About() {
             {[
               {
                 title: 'Frontend Development',
-                items: ['React', 'Redux', 'Material-UI', 'ag-grid', 'Responsive & Accessible Design', 'Component Architecture'],
+                items: ['React', 'Redux', 'Material-UI', 'ag-grid', 'JavaScript', 'TypeScript', 'Responsive & Accessible Design', 'Component Architecture'],
               },
               {
                 title: 'Backend & Systems',
                 items: ['Java', 'Spring Boot', 'Node.js', 'REST APIs', 'Async Processing', 'Database Design'],
               },
               {
-                title: 'Data & Visualization',
-                items: ['Python', 'Pandas', 'Plotly & Dash', 'Data Analysis', 'Anomaly Detection', 'Business Intelligence'],
-              },
-              {
                 title: 'DevOps & Automation',
-                items: ['CI/CD Pipelines', 'GitHub Actions', 'Docker & Kubernetes', 'Cloud Infrastructure', 'Security & Compliance'],
+                items: ['CI/CD Pipelines', 'GitHub Actions', 'Docker & Kubernetes', 'Cloud Infrastructure', 'Security & Compliance', 'Cucumber Automation Scripts'],
               },
               {
                 title: 'UX & Design',
